@@ -2,9 +2,11 @@ package dev.contentcalenar;
 
 import dev.contentcalenar.config.ContentCalendarProperties;
 import dev.contentcalenar.model.Content;
+import dev.contentcalenar.model.Post;
 import dev.contentcalenar.model.Status;
 import dev.contentcalenar.model.Type;
 import dev.contentcalenar.repository.ContentRepository;
+import dev.contentcalenar.repository.PostRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -37,6 +39,11 @@ public class ContentCalendarApplication {
 					"");
 			contentRepository.save(content);
 		};
+	}
+
+	@Bean
+	CommandLineRunner commandLineRunnerPost(PostRepository postRepository){
+		return args -> postRepository.save(new Post("Hello World", "hello-world", "Welcome to my blog", "Hny"));
 	}
 
 }
